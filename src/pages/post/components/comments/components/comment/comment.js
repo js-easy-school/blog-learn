@@ -20,6 +20,7 @@ const CommentContainer = ({ className, postId, id, author, publishedAt, content 
 			}),
 		);
 	};
+	
 	return (
 		<div className={className}>
 			<div className="comment">
