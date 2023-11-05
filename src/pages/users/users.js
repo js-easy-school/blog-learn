@@ -14,6 +14,7 @@ const UsersContainer = ({ className }) => {
 	const [errorMessage, setErrorMessage] = useState(null);
 	const [shouldUpdateUserList, setShouldUpdateUserList] = useState(false);
 	const userRole = useSelector(selectUserRole);
+
 	const requestServer = useServerRequest();
 
 	useEffect(() => {

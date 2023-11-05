@@ -3,14 +3,15 @@ import styled from 'styled-components';
 import { Icon } from '../../../../components';
 import { Comment } from './components';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectUserLogin, selectUserRole } from '../../../../selectors';
+import { selectUserId, selectUserRole } from '../../../../selectors';
 import { useServerRequest } from '../../../../hooks';
 import { addCommentAsync } from '../../../../actions';
-import { ROLE } from '../../../../constants';
+import { PROP_TYPE, ROLE } from '../../../../constants';
+import { PropTypes } from 'prop-types';
 
-const CommentsContainer = ({ className, comments, postId }) => {
+const CommentsContainer = ({ className, comments, postId,  }) => {
 	const [newComment, setNewComment] = useState('');
-	const userId = useSelector(selectUserLogin);
+	const userId = useSelector(selectUserId);
 	const userRole = useSelector(selectUserRole);
 	const dispatch = useDispatch();
 	const requestServer = useServerRequest();
@@ -44,8 +45,8 @@ const CommentsContainer = ({ className, comments, postId }) => {
 				{comments.map(({ id, author, content, publishedAt }) => (
 					<Comment
 						key={id}
-						id={id}
 						postId={postId}
+						id={id}
 						author={author}
 						content={content}
 						publishedAt={publishedAt}
@@ -73,3 +74,8 @@ export const Comments = styled(CommentsContainer)`
 		resize: none;
 	}
 `;
+
+Comments.propTypes = {
+	comments: PropTypes.arrayOf(PROP_TYPE.COMMENT).isRequired,
+	postId: PropTypes.string.isRequired,
+};

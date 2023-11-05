@@ -8,7 +8,7 @@ import {
 	selectUserLogin,
 	selectUserSession,
 } from '../../../../selectors';
-import { logout } from '../../../../actions/logout';
+import { logout } from '../../../../actions';
 import { checkAccess } from '../../../../utils';
 
 const RightAligned = styled.div`
